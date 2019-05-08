@@ -57,8 +57,15 @@
                                 </form>
                             </div>
                             <!-- Login Area -->
+
                             <div class="login-area">
-                                <a href={% url 'login' %}><span>登录/注册</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                {% if request.session.is_login %}
+                                    <a href="#"><span>用户：{{ request.session.user_name }}</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                    <a href={% url 'logout' %}><span>退出登录</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                {% else %}
+                                    <a href={% url 'login' %}><span>登录</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                    <a href={% url 'register' %}><span>注册</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -916,10 +923,10 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12 col-sm-5">
                         <!-- Copywrite Text -->
-                        <p class="copywrite-text"><a href="#">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> - Colorlib All rights reserved | More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+{#                        <p class="copywrite-text"><a href="#">#}
+{#Copyright &copy;<script>document.write(new Date().getFullYear());</script> - Colorlib All rights reserved | More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>#}
 
-</p>
+{#</p>#}
                     </div>
                     <div class="col-12 col-sm-7">
                         <!-- Footer Nav -->
