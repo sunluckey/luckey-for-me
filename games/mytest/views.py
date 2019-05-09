@@ -17,3 +17,17 @@ def index(request):
                                           'rg': recommend_game,
                                           })
 
+def contact(request):
+    return render(request, 'contact.html')
+
+def game_review(request):
+    return render(request, 'game-review.html')
+
+def post(request):
+    return render(request, 'post.html')
+
+def single_game_review(request):
+    return render(request, 'single-game-review.html')
+
+def single_post(request):
+    return render(request, 'single-post.html')

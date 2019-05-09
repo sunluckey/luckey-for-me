@@ -66,7 +66,7 @@ def register(request):
                 new_user.password = hash_code(password1)
                 new_user.email = email
                 new_user.save()
-                return render(request, 'login.html')
+                return redirect('/login/')
     register_form = RegisterForm()
     return render(request, 'register.html', locals())
 

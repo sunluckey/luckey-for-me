@@ -10,12 +10,12 @@
 
     <!-- Title -->
     <title>Egames - Gaming Magazine Template</title>
-
+    {% load static %}
     <!-- Favicon -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href={% static "img/core-img/favicon.ico" %}>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href={% static "style.css" %}>
 
 </head>
 
@@ -38,7 +38,7 @@
                     <div class="col-12 d-flex align-items-center justify-content-between">
                         <!-- Logo Area -->
                         <div class="logo">
-                            <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                            <a href={% url 'index' %}><img src={% static "img/core-img/logo.png" %} alt=""></a>
                         </div>
 
                         <!-- Search & Login Area -->
@@ -52,7 +52,13 @@
                             </div>
                             <!-- Login Area -->
                             <div class="login-area">
-                                <a href="#"><span>Login / Register</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                {% if request.session.is_login %}
+                                    <a href="#"><span>用户：{{ request.session.user_name }}</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                    <a href={% url 'logout' %}><span>退出登录</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                {% else %}
+                                    <a href={% url 'login' %}><span>登录</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                    <a href={% url 'register' %}><span>注册</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -83,36 +89,36 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="game-review.html">Games</a>
+                                    <li><a href={% url "index" %}>Home</a></li>
+                                    <li><a href={% url "game_review" %}>Games</a>
                                         <ul class="dropdown">
-                                            <li><a href="game-review.html">Game Review</a></li>
-                                            <li><a href="single-game-review.html">Single Game Review</a></li>
+                                            <li><a href={% url "game_review" %}>Game Review</a></li>
+                                            <li><a href={% url "single_game_review" %}>Single Game Review</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="post.html">Articles</a></li>
-                                            <li><a href="single-post.html">Single Articles</a></li>
-                                            <li><a href="game-review.html">Game Review</a></li>
-                                            <li><a href="single-game-review.html">Single Game Review</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href={% url "index" %}>Home</a></li>
+                                            <li><a href={% url "post" %}>Articles</a></li>
+                                            <li><a href={% url "single_post" %}>Single Articles</a></li>
+                                            <li><a href={% url "game_review" %}>Game Review</a></li>
+                                            <li><a href={% url "single_game_review" %}>Single Game Review</a></li>
+                                            <li><a href={% url "contact" %}>Contact</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="post.html">Articles</a>
+                                    <li><a href={% url "post" %}>Articles</a>
                                         <ul class="dropdown">
-                                            <li><a href="post.html">Articles</a></li>
-                                            <li><a href="single-post.html">Single Articles</a></li>
+                                            <li><a href={% url "post" %}>Articles</a></li>
+                                            <li><a href={% url "single_post" %}>Single Articles</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="single-game-review.html">Reviews</a>
+                                    <li><a href={% url "single_game_review" %}>Reviews</a>
                                         <ul class="dropdown">
-                                            <li><a href="game-review.html">Game Review</a></li>
-                                            <li><a href="single-game-review.html">Single Game Review</a></li>
+                                            <li><a href={% url "game_review" %}>Game Review</a></li>
+                                            <li><a href={% url "single_game_review" %}>Single Game Review</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href={% url "contact" %}>Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -135,7 +141,7 @@
     <!-- ##### Header Area End ##### -->
 
     <!-- ##### Breadcrumb Area Start ##### -->
-    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/3.jpg);">
+    <section class="breadcrumb-area bg-img bg-overlay" style="background-image: url({% static "img/bg-img/3.jpg" %});">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <!-- Breadcrumb Text -->
@@ -160,10 +166,10 @@
                         <!-- *** Single Articles Area *** -->
                         <div class="single-articles-area d-flex flex-wrap mb-30">
                             <div class="article-thumbnail">
-                                <img src="img/bg-img/6.jpg" alt="">
+                                <img src={% static "img/bg-img/6.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">Sony’s new releases for 2018</a>
+                                <a href={% url 'single_post' %} class="post-title">Sony’s new releases for 2018</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -175,10 +181,10 @@
                         <!-- *** Single Articles Area *** -->
                         <div class="single-articles-area d-flex flex-wrap mb-30">
                             <div class="article-thumbnail">
-                                <img src="img/bg-img/7.jpg" alt="">
+                                <img src={% static "img/bg-img/7.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">10 Tips to be a better gamer</a>
+                                <a href={% url 'single_post' %} class="post-title">10 Tips to be a better gamer</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -190,10 +196,10 @@
                         <!-- *** Single Articles Area *** -->
                         <div class="single-articles-area d-flex flex-wrap mb-30">
                             <div class="article-thumbnail">
-                                <img src="img/bg-img/8.jpg" alt="">
+                                <img src={% static "img/bg-img/8.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">Microsoft has some new tips</a>
+                                <a href={% url 'single_post' %} class="post-title">Microsoft has some new tips</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -205,10 +211,10 @@
                         <!-- *** Single Articles Area *** -->
                         <div class="single-articles-area d-flex flex-wrap mb-30">
                             <div class="article-thumbnail">
-                                <img src="img/bg-img/9.jpg" alt="">
+                                <img src={% static "img/bg-img/9.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">Sony’s new releases for 2018</a>
+                                <a href={% url 'single_post' %} class="post-title">Sony’s new releases for 2018</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -220,10 +226,10 @@
                         <!-- *** Single Articles Area *** -->
                         <div class="single-articles-area d-flex flex-wrap mb-30">
                             <div class="article-thumbnail">
-                                <img src="img/bg-img/10.jpg" alt="">
+                                <img src={% static "img/bg-img/10.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">10 Tips to be a better gamer</a>
+                                <a href={% url 'single_post' %} class="post-title">10 Tips to be a better gamer</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -235,10 +241,10 @@
                         <!-- *** Single Articles Area *** -->
                         <div class="single-articles-area d-flex flex-wrap mb-30">
                             <div class="article-thumbnail">
-                                <img src="img/bg-img/11.jpg" alt="">
+                                <img src={% static "img/bg-img/11.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">Microsoft has some new tips</a>
+                                <a href={% url 'single_post' %} class="post-title">Microsoft has some new tips</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -250,10 +256,10 @@
                         <!-- *** Single Articles Area *** -->
                         <div class="single-articles-area d-flex flex-wrap mb-30">
                             <div class="article-thumbnail">
-                                <img src="img/bg-img/12.jpg" alt="">
+                                <img src={% static "img/bg-img/12.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">Sony’s new releases for 2018</a>
+                                <a href={% url 'single_post' %} class="post-title">Sony’s new releases for 2018</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -265,10 +271,10 @@
                         <!-- *** Single Articles Area *** -->
                         <div class="single-articles-area d-flex flex-wrap mb-30">
                             <div class="article-thumbnail">
-                                <img src="img/bg-img/13.jpg" alt="">
+                                <img src={% static "img/bg-img/13.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">10 Tips to be a better gamer</a>
+                                <a href={% url 'single_post' %} class="post-title">10 Tips to be a better gamer</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -294,9 +300,9 @@
 
                         <!-- Single Widget Area -->
                         <div class="single-widget-area add-widget">
-                            <a href="#"><img src="img/bg-img/add.png" alt=""></a>
+                            <a href="#"><img src={% static "img/bg-img/add.png" %} alt=""></a>
                             <!-- Side Img -->
-                            <img src="img/bg-img/side-img.png" class="side-img" alt="">
+                            <img src={% static "img/bg-img/side-img.png" %} class="side-img" alt="">
                         </div>
 
                         <!-- Single Widget Area -->
@@ -304,7 +310,7 @@
                             <!-- Single Video Widget -->
                             <div class="single-video-widget d-flex">
                                 <div class="video-thumbnail">
-                                    <img src="img/bg-img/14.jpg" alt="">
+                                    <img src={% static "img/bg-img/14.jpg" %} alt="">
                                 </div>
                                 <div class="video-text">
                                     <a href="#" class="video-title">Assemble Your Squad and Join the Battle</a>
@@ -316,7 +322,7 @@
                             <!-- Single Video Widget -->
                             <div class="single-video-widget d-flex">
                                 <div class="video-thumbnail">
-                                    <img src="img/bg-img/15.jpg" alt="">
+                                    <img src={% static "img/bg-img/15.jpg" %} alt="">
                                 </div>
                                 <div class="video-text">
                                     <a href="#" class="video-title">Tips to improve your game</a>
@@ -328,7 +334,7 @@
                             <!-- Single Video Widget -->
                             <div class="single-video-widget d-flex">
                                 <div class="video-thumbnail">
-                                    <img src="img/bg-img/16.jpg" alt="">
+                                    <img src={% static "img/bg-img/16.jpg" %} alt="">
                                 </div>
                                 <div class="video-text">
                                     <a href="#" class="video-title">Game reviews: the best of 2018</a>
@@ -340,7 +346,7 @@
                             <!-- Single Video Widget -->
                             <div class="single-video-widget d-flex">
                                 <div class="video-thumbnail">
-                                    <img src="img/bg-img/17.jpg" alt="">
+                                    <img src={% static "img/bg-img/17.jpg" %} alt="">
                                 </div>
                                 <div class="video-text">
                                     <a href="#" class="video-title">Assemble Your Squad and Join the Battle</a>
@@ -352,7 +358,7 @@
                             <!-- Single Video Widget -->
                             <div class="single-video-widget d-flex">
                                 <div class="video-thumbnail">
-                                    <img src="img/bg-img/18.jpg" alt="">
+                                    <img src={% static "img/bg-img/18.jpg" %} alt="">
                                 </div>
                                 <div class="video-text">
                                     <a href="#" class="video-title">New to gaming? Here are some tips</a>
@@ -368,7 +374,7 @@
                             <!-- Single Post Widget -->
                             <div class="single-post-area d-flex">
                                 <div class="blog-thumbnail">
-                                    <img src="img/bg-img/19.jpg" alt="">
+                                    <img src={% static "img/bg-img/19.jpg" %} alt="">
                                 </div>
                                 <div class="blog-content">
                                     <a href="#" class="post-title">New to gaming? Here are some tips</a>
@@ -379,7 +385,7 @@
                             <!-- Single Post Widget -->
                             <div class="single-post-area d-flex">
                                 <div class="blog-thumbnail">
-                                    <img src="img/bg-img/20.jpg" alt="">
+                                    <img src={% static "img/bg-img/20.jpg" %} alt="">
                                 </div>
                                 <div class="blog-content">
                                     <a href="#" class="post-title">Gaming at a new lever: 2018 new release</a>
@@ -390,7 +396,7 @@
                             <!-- Single Post Widget -->
                             <div class="single-post-area d-flex">
                                 <div class="blog-thumbnail">
-                                    <img src="img/bg-img/21.jpg" alt="">
+                                    <img src={% static "img/bg-img/21.jpg" %} alt="">
                                 </div>
                                 <div class="blog-content">
                                     <a href="#" class="post-title">2018 Comicon: See the lastest news</a>
@@ -401,7 +407,7 @@
                             <!-- Single Post Widget -->
                             <div class="single-post-area d-flex">
                                 <div class="blog-thumbnail">
-                                    <img src="img/bg-img/22.jpg" alt="">
+                                    <img src={% static "img/bg-img/22.jpg" %} alt="">
                                 </div>
                                 <div class="blog-content">
                                     <a href="#" class="post-title">New to gaming? Here are some tips</a>
@@ -424,13 +430,13 @@
                 <!-- Article Thumbnail -->
                 <div class="col-12 col-lg-6">
                     <div class="article-thumbnail mb-100">
-                        <img src="img/bg-img/4.jpg" alt="">
+                        <img src={% static "img/bg-img/4.jpg" %} alt="">
                     </div>
                 </div>
                 <!-- Article Content -->
                 <div class="col-12 col-lg-6">
                     <div class="article-content mb-100">
-                        <a href="single-post.html" class="post-title">Sony’s new releases for 2018</a>
+                        <a href={% url 'single_post' %} class="post-title">Sony’s new releases for 2018</a>
                         <div class="post-meta">
                             <a href="#" class="post-date">July 12, 2018</a>
                             <a href="#" class="post-comments">2 Comments</a>
@@ -454,7 +460,7 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="single-footer-widget mb-70">
                             <div class="widget-title">
-                                <a href="index.html"><img src="img/core-img/logo2.png" alt=""></a>
+                                <a href={% url 'index' %}><img src={% static "img/core-img/logo2.png" %} alt=""></a>
                             </div>
                             <div class="widget-content">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam ut interdum ultricies.</p>
@@ -540,11 +546,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> - Col
                         <!-- Footer Nav -->
                         <div class="footer-nav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="game-review.html">Games</a></li>
-                                <li><a href="post.html">Articles</a></li>
-                                <li><a href="single-game-review.html">Reviews</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href={% url "index" %}>Home</a></li>
+                                <li><a href={% url "game_review" %}>Games</a></li>
+                                <li><a href={% url "post" %}>Articles</a></li>
+                                <li><a href={% url "single_game_review" %}>Reviews</a></li>
+                                <li><a href={% url "contact" %}>Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -556,15 +562,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> - Col
 
     <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src={% static "js/jquery/jquery-2.2.4.min.js" %}></script>
     <!-- Popper js -->
-    <script src="js/bootstrap/popper.min.js"></script>
+    <script src={% static "js/bootstrap/popper.min.js" %}></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src={% static "js/bootstrap/bootstrap.min.js" %}></script>
     <!-- All Plugins js -->
-    <script src="js/plugins/plugins.js"></script>
+    <script src={% static "js/plugins/plugins.js" %}></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src={% static "js/active.js" %}></script>
 </body>
 
 </html>

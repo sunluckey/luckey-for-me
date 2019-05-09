@@ -44,7 +44,7 @@
                     <div class="col-12 d-flex align-items-center justify-content-between">
                         <!-- Logo Area -->
                         <div class="logo">
-                            <a href="index.html"><img src={% static "img/core-img/logo.png" %} alt=""></a>
+                            <a href={% url "index" %}><img src={% static "img/core-img/logo.png" %} alt=""></a>
                         </div>
 
                         <!-- Search & Login Area -->
@@ -96,36 +96,36 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li><a href="index.html">主页</a></li>
-                                    <li><a href="game-review.html">游戏</a>
+                                    <li><a href={% url "index" %}>Home</a></li>
+                                    <li><a href={% url "game_review" %}>Games</a>
                                         <ul class="dropdown">
-                                            <li><a href="game-review.html">游戏评论</a></li>
-                                            <li><a href="single-game-review.html">单个游戏评论</a></li>
+                                            <li><a href={% url "game_review" %}>Game Review</a></li>
+                                            <li><a href={% url "single_game_review" %}>Single Game Review</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">网页导航</a>
+                                    <li><a href="#">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">主页</a></li>
-                                            <li><a href="post.html">文章</a></li>
-                                            <li><a href="single-post.html">单一文章</a></li>
-                                            <li><a href="game-review.html">游戏评论</a></li>
-                                            <li><a href="single-game-review.html">单个游戏评论</a></li>
-                                            <li><a href="contact.html">联系我们</a></li>
+                                            <li><a href={% url "index" %}>Home</a></li>
+                                            <li><a href={% url "post" %}>Articles</a></li>
+                                            <li><a href={% url "single_post" %}>Single Articles</a></li>
+                                            <li><a href={% url "game_review" %}>Game Review</a></li>
+                                            <li><a href={% url "single_game_review" %}>Single Game Review</a></li>
+                                            <li><a href={% url "contact" %}>Contact</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="post.html">文章</a>
+                                    <li><a href={% url "post" %}>Articles</a>
                                         <ul class="dropdown">
-                                            <li><a href="post.html">文章</a></li>
-                                            <li><a href="single-post.html">单一文章</a></li>
+                                            <li><a href={% url "post" %}>Articles</a></li>
+                                            <li><a href={% url "single_post" %}>Single Articles</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="single-game-review.html">评测</a>
+                                    <li><a href={% url "single_game_review" %}>Reviews</a>
                                         <ul class="dropdown">
-                                            <li><a href="game-review.html">游戏评测</a></li>
-                                            <li><a href="single-game-review.html">单一游戏评测</a></li>
+                                            <li><a href={% url "game_review" %}>Game Review</a></li>
+                                            <li><a href={% url "single_game_review" %}>Single Game Review</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">联系我们</a></li>
+                                    <li><a href={% url "contact" %}>Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -779,7 +779,7 @@
                                 <img src={% static "img/bg-img/6.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">Sony’s new releases for 2018</a>
+                                <a href={% url "single_post" %} class="post-title">Sony’s new releases for 2018</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -794,7 +794,7 @@
                                 <img src={% static "img/bg-img/7.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">10 Tips to be a better gamer</a>
+                                <a href={% url "single_post" %} class="post-title">10 Tips to be a better gamer</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -809,7 +809,7 @@
                                 <img src={% static "img/bg-img/8.jpg" %} alt="">
                             </div>
                             <div class="article-content">
-                                <a href="single-post.html" class="post-title">Microsoft has some new tips</a>
+                                <a href={% url "single_post" %} class="post-title">Microsoft has some new tips</a>
                                 <div class="post-meta">
                                     <a href="#" class="post-date">July 12, 2018</a>
                                     <a href="#" class="post-comments">2 Comments</a>
@@ -846,7 +846,7 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="single-footer-widget mb-70 wow fadeInUp" data-wow-delay="100ms">
                             <div class="widget-title">
-                                <a href="index.html"><img src={% static "img/core-img/logo2.png" %} alt=""></a>
+                                <a href={% url "index" %}><img src={% static "img/core-img/logo2.png" %} alt=""></a>
                             </div>
                             <div class="widget-content">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam ut interdum ultricies.</p>
@@ -932,11 +932,11 @@
                         <!-- Footer Nav -->
                         <div class="footer-nav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="game-review.html">Games</a></li>
-                                <li><a href="post.html">Articles</a></li>
-                                <li><a href="single-game-review.html">Reviews</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href={% url "index" %}>Home</a></li>
+                                <li><a href={% url "game_review" %}>Games</a></li>
+                                <li><a href={% url "post" %}>Articles</a></li>
+                                <li><a href={% url "single_game_review" %}>Reviews</a></li>
+                                <li><a href={% url "contact" %}>Contact</a></li>
                             </ul>
                         </div>
                     </div>
