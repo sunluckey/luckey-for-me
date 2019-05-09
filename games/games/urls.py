@@ -36,4 +36,5 @@ urlpatterns = [
     url(r'^post/', post, name='post'),
     url(r'^single_game_review/', single_game_review, name='single_game_review'),
     url(r'^single_post/', single_post, name='single_post'),
+    url(r'^captcha', include('captcha.urls')),
 ]

@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from captcha.fields import CaptchaField
 # Create your models here.
 
 class UserForm(forms.Form):
@@ -11,15 +12,12 @@ class UserForm(forms.Form):
                                max_length=256,
                                min_length=8,
                                widget=forms.PasswordInput(attrs={'class': 'in-1', 'placeholder': "密码大于8位"}))
+    captcha = CaptchaField(label='验证码')
 class User(models.Model):
-    # gender = (('male', '男'),
-    #           ('female', '女'),
-    #           )
 
     name = models.CharField(max_length=128, unique=True)
     password = models.CharField(max_length=256)
     email = models.EmailField(unique=True)
-    # sex = models.CharField(max_length=32, choices=gender, default='男')
     c_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -31,10 +29,7 @@ class User(models.Model):
         verbose_name_plural = '用户'
 
 class RegisterForm(forms.Form):
-    # gender = (
-    #     ('male', "男"),
-    #     ('female', "女"),
-    # )
+
     username = forms.CharField(label="用户名",
                                max_length=128,
                                min_length=1,

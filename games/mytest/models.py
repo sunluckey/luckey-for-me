@@ -22,4 +22,14 @@ class GameKind(models.Model):
     def __str__(self):
         return self.name
 
+class GameVideo(models.Model):
 
+    title = models.CharField(max_length=255, verbose_name='标题')
+    desc = models.CharField(max_length=50, verbose_name='发售公司及平台')
+    time = models.DateField(verbose_name='发表日期')
+    smallimg = models.ImageField(upload_to='small_img', null=True, default=None, blank=True)
+    bigimg = models.ImageField(upload_to='big_img', null=True, default=None, blank=True)
+    videourl = models.CharField(max_length=255, verbose_name='网址')
+
+    def __str__(self):
+        return self.title

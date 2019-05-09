@@ -39,6 +39,11 @@
 {#                    <input type="password" class="in-1" placeholder="请输入密码">#}
                 </div>
                 <div class="a">
+                    {{ login_form.captcha.errors }}
+                    {{ login_form.captcha.label_tag }}
+                    {{ login_form.captcha }}
+                </div>
+                <div class="a">
                     {% if message %}
                         {{ message }}
                     {% endif %}
